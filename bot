@@ -1,0 +1,17 @@
+from aiogram import Bot, Dispatcher, executor, types
+from aiogram.types.web_app_info import WebAppInfo
+
+BOT_TOKEN = '6231361993:AAFCKT2rPnoJv2K4OXAZCpOq8KcjmFGvJjw'
+
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher(bot)
+
+@dp.message_handler(commands=['start'])
+async def start(message: types.Message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    web_app = WebAppInfo(url="https://<твой-username>.github.io/notcoin-clone/")
+    markup.add(types.KeyboardButton(text="Открыть приложение", web_app=web_app))
+    await message.answer("Привет! Нажми на кнопку, чтобы запустить мини-приложение.", reply_markup=markup)
+
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates=True)
