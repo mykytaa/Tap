@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pepe Monad</title>
+    <title>Pepe Clicker</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="particles-js"></div> <div class="image-container">
-        <figure>
-            <img src="pepe.jpeg" alt="Лягушонок Пепе" width="300" height="auto">
-            <figcaption>Лягушонок Пепе - мем.</figcaption>
-        </figure>
+    <div id="particles-js"></div>
+    <div class="container">
+        <div class="clicker-area">
+            <div class="image-container">
+                <img src="images/pepe.jpeg" alt="Лягушонок Пепе" id="clickImage">
+            </div>
+            <div class="counter" id="clickCounter">0</div>
+            <div class="message" id="clickMessage">Нажми на Пепе!</div>
+        </div>
     </div>
-    <svg width="0" height="0">
-        <filter id="distortion">
-            <feTurbulence baseFrequency="0.01 0.05" numOctaves="3" type="fractalNoise" result="noise"></feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
-        </filter>
-    </svg>
     <script src="particles.min.js"></script>
     <script src="script.js"></script>
 </body>
