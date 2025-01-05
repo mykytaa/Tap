@@ -1,51 +1,48 @@
-let tg = window.Telegram.WebApp;
-tg.expand();
-
-let score = 0;
-let clickPower = 1;
-// ... другие переменные, например, для улучшений
-
-// Загрузка данных из localStorage
-function loadData() {
-    score = parseInt(localStorage.getItem('score')) || 0;
-    clickPower = parseInt(localStorage.getItem('clickPower')) || 1;
-    // ... загрузка других данных
-    updateScore();
-}
-
-// Сохранение данных в localStorage
-function saveData() {
-    localStorage.setItem('score', score);
-    localStorage.setItem('clickPower', clickPower);
-    // ... сохранение других данных
-}
-
-// Обновление отображения счета
-function updateScore() {
-    document.getElementById('score').textContent = "Монеты: " + score;
-}
-
-// Обработка нажатия на монетку
-function tap() {
-    score += clickPower;
-    updateScore();
-    saveData();
-
-    // Можно добавить анимацию монетки здесь
-    const coin = document.getElementById('coin');
-    coin.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-        coin.style.transform = 'scale(1)';
-    }, 100);
-}
-
-// Функции для улучшений (пример)
-function upgradeClickPower() {
-    // ... логика покупки улучшения
-}
-
-// Добавляем обработчик нажатия на монетку
-document.getElementById('coin').addEventListener('click', tap);
-
-// Инициализация при загрузке
-loadData();
+particlesJS("particles-js", {
+    "particles": {
+        "number": {
+            "value": 80,
+            "density": {
+                "enable": true,
+                "value_area": 800
+            }
+        },
+        "color": {
+            "value": "#8000FF"
+        },
+        "shape": {
+            "type": "circle",
+            "stroke": {
+                "width": 0,
+                "color": "#000000"
+            },
+            "polygon": {
+                "nb_sides": 5
+            },
+            "image": {
+                "src": "img/github.svg",
+                "width": 100,
+                "height": 100
+            }
+        },
+        "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+                "enable": false,
+                "opacity_min": 0.1,
+                "speed": 1,
+                "sync": false
+            }
+        },
+        "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+                "enable": false,
+                "size_min": 0.1,
+                "speed": 40,
+                "sync": false
+            }
+        },
+        "line_linked":
