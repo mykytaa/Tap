@@ -7,8 +7,9 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    overflow: hidden;
-    user-select: none;
+    overflow: hidden; /* Предотвращает появление полос прокрутки */
+    user-select: none; /* Запрещает выделение текста */
+    -webkit-tap-highlight-color: transparent; /* Убирает подсветку при тапе на мобильных */
 }
 
 #particles-js {
@@ -16,11 +17,16 @@ body {
     width: 100%;
     height: 100%;
     z-index: 0;
-    pointer-events: none;
+    pointer-events: none; /* Частицы не должны перехватывать клики */
 }
 
 .container {
-    z-index: 1;
+    z-index: 1; /* Контент поверх частиц */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 .clicker-area {
@@ -32,6 +38,8 @@ body {
     border-radius: 16px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s ease;
+    max-width: 90vw; /* Максимальная ширина, чтобы не выходить за границы экрана */
+    max-height: 90vh; /* Максимальная высота */
 }
 
 .image-container {
@@ -46,17 +54,16 @@ body {
     object-fit: cover;
     border: 4px solid #444;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-    transition: transform 0.1s ease-in-out; /* Плавное масштабирование */
+    transition: transform 0.1s ease-in-out;
 }
 
 #clickImage:hover {
-    transform: scale(1.05); /* Небольшое увеличение при наведении */
+    transform: scale(1.05);
 }
 
 #clickImage:active {
-    transform: scale(0.9); /* Уменьшение при клике */
+    transform: scale(0.95);
 }
-
 
 .counter {
     font-size: 2em;
@@ -70,6 +77,57 @@ body {
 .message {
     margin-top: 10px;
     color: #777;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Добавили transition для transform */
     opacity: 0;
+    transform: translateY(10px); /* Начальное положение сообщения ниже */
 }
+
+.message.show { /* Класс для показа сообщения */
+    opacity: 1;
+    transform: translateY(0); /* Сообщение поднимается наверх */
+}
+
+/* Адаптация под разные размеры экранов */
+@media (max-width: 768px) {
+    .clicker-area {
+        padding: 20px;
+    }
+
+    #clickImage {
+        width: 150px;
+        height: 150px;
+    }
+
+    .counter {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    #clickImage {
+        width: 120px;
+        height: 120px;
+    }
+
+    .counter {
+        font-size: 1.2em;
+    }
+}
+
+/* Адаптация под альбомную ориентацию на мобильных */
+@media (max-height: 400px) and (orientation: landscape) {
+    .clicker-area {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        padding: 10px; /* Уменьшаем отступы в альбомной ориентации */
+    }
+
+    .image-container {
+        margin: 0 10px; /* Добавляем небольшие отступы между элементами */
+    }
+
+    .counter {
+        margin: 0 10px;
+    }
+}s
