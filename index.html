@@ -3,56 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pepe</title>
-    <style>
-        body {
-            background-color: #111; /* Темный фон */
-            color: #eee; /* Светлый текст для контраста (если потребуется) */
-            font-family: sans-serif; /* Простой шрифт */
-            display: flex;
-            justify-content: center; /* Центрирование по горизонтали */
-            align-items: center; /* Центрирование по вертикали */
-            min-height: 100vh; /* Занимает всю высоту экрана */
-            margin: 0; /* Убираем стандартные отступы */
-        }
-
-        .image-container {
-            border: 2px solid #555; /* Тонкая серая рамка */
-            padding: 10px;
-            border-radius: 8px; /* Скругленные углы */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Легкая тень */
-            background-color: #222; /* Чуть более светлый фон для контейнера */
-        }
-
-        img {
-            display: block; /* Убираем отступ снизу у изображения */
-            max-width: 100%; /* Изображение не выходит за пределы контейнера */
-            height: auto;
-            border-radius: 4px;
-        }
-
-        figcaption {
-          text-align: center;
-          margin-top: 10px;
-          color: #999;
-          font-style: italic;
-        }
-
-        /* Неоновый акцент при наведении */
-        .image-container:hover {
-            border-color: #8000FF; /* Фиолетовый неон */
-            box-shadow: 0 0 15px rgba(128, 0, 255, 0.5); /* Более яркая тень при наведении */
-        }
-    </style>
+    <title>Pepe Monad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="image-container">
+    <div id="particles-js"></div> <div class="image-container">
         <figure>
-          <img src="pepe.jpeg" alt="Лягушонок Пепе" width="300" height="auto">
-          <figcaption>Лягушонок Пепе - мем.</figcaption>
+            <img src="images/pepe.jpeg" alt="Лягушонок Пепе" width="300" height="auto">
+            <figcaption>Лягушонок Пепе - мем.</figcaption>
         </figure>
     </div>
-
+    <svg width="0" height="0">
+        <filter id="distortion">
+            <feTurbulence baseFrequency="0.01 0.05" numOctaves="3" type="fractalNoise" result="noise"></feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+        </filter>
+    </svg>
+    <script src="particles.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
